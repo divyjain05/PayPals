@@ -123,25 +123,6 @@ PayPals/
 │
 └── README.md                    # This file
 ```
-
-## 📦 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
-- **npm** or **yarn** - Comes with Node.js
-- **MySQL** (v5.7 or higher) - [Download](https://www.mysql.com/)
-- **Git** - For version control
-
-### Environment Variables
-You'll need to set up environment variables for database connection:
-
-```
-DATABASE_URL="mysql://username:password@localhost:3306/paypals"
-JWT_SECRET="your_jwt_secret_key_here"
-PORT=5000
-```
-
 ### Authentication Endpoints
 
 - **Register User**
