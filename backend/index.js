@@ -10,12 +10,14 @@ const app = express();
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",                 
-    "https://your-vercel-domain.vercel.app",
+    "http://localhost:5173",
+    "https://pay-pals.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
