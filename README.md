@@ -2,21 +2,21 @@
 
 A mobile-first platform for tracking shared expenses and splitting bills fairly among friends, roommates, travel groups, and business teams. PayPals makes group finances simple, transparent, and hassle-free with automated tracking, instant balance views, and seamless payment settlements.
 
-## 🚨 Problem Statement
+## Problem Statement
 
 Splitting shared expenses among friends, roommates, travel groups, or business teams often leads to confusion, unfair settlements, and delayed payments. Traditional methods like cash notes, chat messages, or spreadsheets lack:
 
-- ❌ **Automation** - Manual tracking is error-prone and time-consuming
-- ❌ **Transparency** - Unclear who owes whom and how much
-- ❌ **Reminders** - Easy to forget who needs to pay back
-- ❌ **Fair Splitting** - Complex calculations for different split scenarios
-- ❌ **Payment Tracking** - No record of settlements
+- **Automation** - Manual tracking is error-prone and time-consuming
+- **Transparency** - Unclear who owes whom and how much
+- **Reminders** - Easy to forget who needs to pay back
+- **Fair Splitting** - Complex calculations for different split scenarios
+- **Payment Tracking** - No record of settlements
 
-## 🎯 Project Overview
+## Project Overview
 
 PayPals is a comprehensive expense-sharing platform designed to simplify group finances. The application separates concerns between a robust backend API and a mobile-first responsive frontend interface, ensuring scalability, maintainability, and an excellent user experience. It automates expense tracking, provides transparent balance calculations, and streamlines payment settlements for any group size.
 
-## ✨ Features
+## Features
 
 - **Expense Tracking**: Log shared expenses with automatic balance calculations
 - **Fair Bill Splitting**: Multiple split options (equal, percentage, itemized)
@@ -65,7 +65,7 @@ The application follows a client-server architecture with clear separation of co
 └─────────────────────────────────────────┘
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 19**: Latest React with modern hooks and features
@@ -88,7 +88,7 @@ The application follows a client-server architecture with clear separation of co
 - **ESLint**: Code quality and style enforcement
 - **npm/yarn**: Package management
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 PayPals/
@@ -123,6 +123,25 @@ PayPals/
 │
 └── README.md                    # This file
 ```
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
+- **npm** or **yarn** - Comes with Node.js
+- **MySQL** (v5.7 or higher) - [Download](https://www.mysql.com/)
+- **Git** - For version control
+
+### Environment Variables
+You'll need to set up environment variables for database connection:
+
+```
+DATABASE_URL="mysql://username:password@localhost:3306/paypals"
+JWT_SECRET="your_jwt_secret_key_here"
+PORT=5000
+```
+
 ### Authentication Endpoints
 
 - **Register User**
@@ -238,7 +257,7 @@ model User {
 }
 ```
 
-## 🔐 Security
+## Security
 
 ### Implemented Security Features
 
@@ -247,6 +266,3 @@ model User {
 3. **CORS Protection**: Controlled cross-origin requests
 4. **Input Validation**: Server-side validation for all inputs
 5. **Secure Headers**: HTTP security headers
-
----
-**Author**: Divy Jain ([@divyjain05](https://github.com/divyjain05))
