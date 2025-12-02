@@ -38,9 +38,9 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-neutral-light">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
+        <h2 className="text-2xl font-bold mb-6 text-center text-primary">
           Login to PayPals
         </h2>
 
@@ -50,7 +50,7 @@ function Login() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             required
           />
 
@@ -59,7 +59,7 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             required
           />
 
@@ -69,15 +69,15 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition"
+            className="w-full bg-primary text-white p-3 rounded-lg hover:bg-teal-dark transition"
           >
             Login
           </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-4">
+        <p className="text-center text-neutral-dark mt-4">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-500 hover:underline">
+          <a href="/signup" className="text-primary hover:underline">
             Sign Up
           </a>
         </p>
