@@ -35,7 +35,7 @@ function GroupDetails() {
                 return;
             }
 
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/group/${id}`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -54,7 +54,7 @@ function GroupDetails() {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/group/${id}/members`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${id}/members`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -80,7 +80,7 @@ function GroupDetails() {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/group/${id}/expenses`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${id}/expenses`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -126,7 +126,7 @@ function GroupDetails() {
         if (!memberToDelete) return;
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/group/${id}/members/${memberToDelete.id}`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${id}/members/${memberToDelete.id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });
