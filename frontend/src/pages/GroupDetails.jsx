@@ -80,7 +80,7 @@ function GroupDetails() {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${id}/expenses`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/group/${id}/expenses`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
