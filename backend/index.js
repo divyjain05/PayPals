@@ -20,7 +20,10 @@ app.use(cors({
 
 app.use(express.json());
 
+const groupRoutes = require("./src/routes/groupRoutes");
+
 app.use("/api/auth", authRoutes);
+app.use("/api/groups", groupRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
