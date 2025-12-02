@@ -12,6 +12,10 @@ model User {
   name      String
   email     String   @unique
   password  String
+  profilePhoto String?
+  currency     String? @default("INR")
+  country      String? @default("India")
+  timezone     String? @default("Asia/Kolkata")
   groups    Group[]
   createdAt DateTime @default(now())
 }
@@ -19,9 +23,12 @@ model User {
 model Group {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   name      String
+  budget    Float?
   userId    String    @db.ObjectId
   user      User      @relation(fields: [userId], references: [id])
+  members   Member[]
   expenses  Expense[]
+  settlements Settlement[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
@@ -30,8 +37,38 @@ model Expense {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   description String
   amount      Float
+  category    String   @default("Misc")
   date        DateTime @default(now())
   groupId     String   @db.ObjectId
   group       Group    @relation(fields: [groupId], references: [id])
+  paidById    String   @db.ObjectId
+  paidBy      Member   @relation("PaidBy", fields: [paidById], references: [id])
+  splitBetweenIds String[] @db.ObjectId
+  splitBetween Member[] @relation("SplitBetween", fields: [splitBetweenIds], references: [id])
   createdAt   DateTime @default(now())
+}
+
+model Settlement {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount    Float
+  fromId    String   @db.ObjectId
+  from      Member   @relation("SettlementFrom", fields: [fromId], references: [id])
+  toId      String   @db.ObjectId
+  to        Member   @relation("SettlementTo", fields: [toId], references: [id])
+  groupId   String   @db.ObjectId
+  group     Group    @relation(fields: [groupId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Member {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  groupId   String   @db.ObjectId
+  group     Group    @relation(fields: [groupId], references: [id])
+  paidExpenses Expense[] @relation("PaidBy")
+  splitExpenses Expense[] @relation("SplitBetween", fields: [splitExpenseIds], references: [id])
+  splitExpenseIds String[] @db.ObjectId
+  settlementsPaid Settlement[] @relation("SettlementFrom")
+  settlementsReceived Settlement[] @relation("SettlementTo")
+  createdAt DateTime @default(now())
 }

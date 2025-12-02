@@ -50,4 +50,59 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const getUserProfile = async (req, res) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profilePhoto: true,
+        currency: true,
+        country: true,
+        timezone: true,
+      },
+    });
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+const updateUserProfile = async (req, res) => {
+  try {
+    const { name, profilePhoto, currency, country, timezone } = req.body;
+
+    const user = await prisma.user.update({
+      where: { id: req.user.id },
+      data: {
+        name,
+        profilePhoto,
+        currency,
+        country,
+        timezone,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profilePhoto: true,
+        currency: true,
+        country: true,
+        timezone: true,
+      },
+    });
+
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+module.exports = { registerUser, loginUser, getUserProfile, updateUserProfile };
